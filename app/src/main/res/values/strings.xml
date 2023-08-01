@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SolarSystem</string>
+    <string name="radius_title">Радиус:</string>
+    <string name="mass_title">Масса:</string>
+    <string name="density_title">Плотность:</string>
+    <string name="open_date_title">Дата открытия:</string>
+    <string name="dv_info">Орбитальный манёвр:</string>
+</resources>
