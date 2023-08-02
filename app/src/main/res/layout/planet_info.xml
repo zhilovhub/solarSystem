@@ -1,225 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black" >
+    android:background="@color/black">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left_guideline"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right_guideline"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp" />
-
-    <ImageView
-        android:id="@+id/planet_image"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        tools:src="@drawable/earth"
-        android:adjustViewBounds="true"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/planet_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="44sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="18dp"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/planet_image"
-        tools:text="Земля" />
-
-    <LinearLayout
-        android:id="@+id/radius_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/planet_name" >
-
-        <TextView
-            android:id="@+id/radius_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="@string/radius_title" />
-
-        <TextView
-            android:id="@+id/radius"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:layout_marginStart="16dp"
-            tools:text="6371.0 км" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/mass_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/radius_info" >
-
-        <TextView
-            android:id="@+id/mass_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="@string/mass_title" />
-
-        <TextView
-            android:id="@+id/mass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:layout_marginStart="16dp"
-            tools:text="5.972E24 кг" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/density_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/mass_info" >
-
-        <TextView
-            android:id="@+id/density_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="@string/density_title" />
-
-        <TextView
-            android:id="@+id/density"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:layout_marginStart="16dp"
-            tools:text="5.5134 г/см^3" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/open_date_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/density_info" >
-
-        <TextView
-            android:id="@+id/open_date_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="@string/open_date_title" />
-
-        <TextView
-            android:id="@+id/open_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:layout_marginStart="16dp"
-            tools:text="31.07.2023" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/dv_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/open_date_info" >
-
-        <TextView
-            android:id="@+id/dv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="@string/dv_info" />
-
-        <TextView
-            android:id="@+id/dv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:layout_marginStart="16dp"
-            tools:text="0 км/с" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/description_info"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="12dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintEnd_toStartOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/dv_info"
-        app:layout_constraintBottom_toBottomOf="parent" >
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_guideline"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_guideline"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <ImageView
+            android:id="@+id/planet_image"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            tools:src="@drawable/earth"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/planet_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="22sp"
-            tools:text="Планета с самой большой плотностью в Солнечной системе.\nЗдесь живёт 8 миллиардов человек." />
+            android:textSize="44sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/planet_image"
+            tools:text="Земля" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/radius_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/planet_name" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/radius_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/radius_title" />
+
+            <TextView
+                android:id="@+id/radius"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                tools:text="6371.0 км" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mass_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/radius_info" >
+
+            <TextView
+                android:id="@+id/mass_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/mass_title" />
+
+            <TextView
+                android:id="@+id/mass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                tools:text="5.972E24 кг" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/density_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/mass_info" >
+
+            <TextView
+                android:id="@+id/density_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/density_title" />
+
+            <TextView
+                android:id="@+id/density"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                tools:text="5.5134 г/см^3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/open_date_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/density_info" >
+
+            <TextView
+                android:id="@+id/open_date_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/open_date_title" />
+
+            <TextView
+                android:id="@+id/open_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                tools:text="31.07.2023" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dv_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/open_date_info" >
+
+            <TextView
+                android:id="@+id/dv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/dv_info" />
+
+            <TextView
+                android:id="@+id/dv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                tools:text="0 км/с" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/description_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintEnd_toStartOf="@id/right_guideline"
+            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@id/dv_info" >
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                tools:text="Планета с самой большой плотностью в Солнечной системе.\nЗдесь живёт 8 миллиардов человек." />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
