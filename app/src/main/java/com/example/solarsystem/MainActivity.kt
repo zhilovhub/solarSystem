@@ -5,14 +5,8 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.solarsystem.databinding.ActivityMainBinding
-import kotlinx.coroutines.*
-import okhttp3.*
-import org.jsoup.Jsoup
-import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
-
-    private val planets = mutableListOf<Planet>()
 
     private lateinit var adapter: RecyclerViewAdapter
     private lateinit var binding: ActivityMainBinding
@@ -22,75 +16,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        viewmodel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
         val recyclerView = binding.planetsContainer
         adapter = RecyclerViewAdapter {
             navigateToFragmentInfo(it)
         }
-
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        getHTMLPage()
-        println(planets.size)
-        println(12345)
-    }
-
-    private fun getHTMLPage() {
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://gvard.github.io/solarsystem/")
-            .get()
-            .build()
-
-        val call = client.newCall(request)
-        call.enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                throw IOException()
-            }
-            override fun onResponse(call: Call, response: Response) {
-                parseHTML(response.body?.string())
-            }
-        })
-    }
-
-    private fun parseHTML(content: String?) {
-        if (content != null) {
-            val doc = Jsoup.parse(content)
-            val planetsDivs = doc.getElementById("tab")?.getElementsByClass("obj")
-            if (planetsDivs != null) {
-                var planetName: String
-                var radius: String
-                var mass: String
-                var density: String
-                var openDate: String
-                var deltaV: String
-                var description: String
-                var imgURL: String
-
-                for (planetDiv in planetsDivs) {
-                    planetName = planetDiv.getElementsByAttributeValue("class", "name").text()
-                    radius = planetDiv.getElementsByAttributeValue("class", "size").text()
-                    mass = planetDiv.getElementsByAttributeValue("class", "mass").text()
-                    openDate = planetDiv.getElementsByAttributeValue("class", "date").text()
-                    deltaV = planetDiv.getElementsByAttributeValue("class", "deltav").text()
-                    density = planetDiv.getElementsByAttributeValue("class", "dens").text()
-                    description = planetDiv.getElementsByAttributeValue("class", "desc").text()
-                    imgURL = "https://gvard.github.io/solarsystem/${planetDiv.getElementsByTag("img").first()?.attr("src").toString()}"
-
-                    planets.add(
-                        Planet(
-                            planetName, radius, mass, density, openDate, deltaV, description, imgURL
-                        )
-                    )
-                }
-                CoroutineScope(Dispatchers.Main).launch {
-                    println(planets.size)
-                    adapter.planets = planets
-                }
-            }
+        viewmodel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+        viewmodel.planets.observe(this) {
+            updateRecyclerViewAdapterData(it)
         }
+
+        viewmodel.parsePlanets()
+
+        setContentView(binding.root)
+    }
+
+    private fun updateRecyclerViewAdapterData(planets: List<Planet>) {
+        adapter.planets = planets
     }
 
     private fun navigateToFragmentInfo(planet: Planet) {
