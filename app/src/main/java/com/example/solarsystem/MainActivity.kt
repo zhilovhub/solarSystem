@@ -2,8 +2,9 @@ package com.example.solarsystem
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.solarsystem.databinding.ActivityMainBinding
 import kotlinx.coroutines.*
 import okhttp3.*
 import org.jsoup.Jsoup
@@ -12,14 +13,18 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
 
     private val planets = mutableListOf<Planet>()
+
     private lateinit var adapter: RecyclerViewAdapter
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewmodel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.planets_container)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        viewmodel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+
+        val recyclerView = binding.planetsContainer
         adapter = RecyclerViewAdapter {
             navigateToFragmentInfo(it)
         }
